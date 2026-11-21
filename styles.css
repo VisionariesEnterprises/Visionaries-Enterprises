@@ -1,35 +1,38 @@
 :root {
-    --sand: #F4EFE3;
-    --sand-2: #EDE6D4;
-    --card: #FBF8F0;
-    --moss: #3E5A48;
-    --moss-deep: #2B4235;
-    --teal: #4F7D74;
-    --navy: #1F2A3E;
-    --gold: #B98A3E;
-    --gold-soft: #D9BD84;
-    --ink: #24291f;
-    --line: rgba(31,42,62,0.12);
+    /* NORTHSTAR Property Ventures palette (logo: navy #012D85, deep navy #051846, gold #EBAF1A, light gold #FDD352, dark gold #866A24) */
+    --sand: #F7F5EF;
+    --sand-2: #EFECE3;
+    --card: #FFFFFF;
+    --moss: #012D85;        /* primary (buttons, bands) - kept the old variable names so every rule still works */
+    --moss-deep: #051846;
+    --teal: #012D85;
+    --navy: #051846;
+    --gold: #C9940F;
+    --gold-soft: #FDD352;
+    --ink: #1A1F2B;
+    --line: rgba(5,24,70,0.12);
     font-size: 17px;
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --sand: #1B1F1A;
-      --sand-2: #202620;
-      --card: #232922;
-      --ink: #EDE8DA;
-      --navy: #EDE8DA;
-      --line: rgba(237,232,218,0.14);
+      --sand: #0B1124;
+      --sand-2: #101833;
+      --card: #131C38;
+      --ink: #E9ECF4;
+      --navy: #E9ECF4;
+      --teal: #FDD352;
+      --line: rgba(233,236,244,0.14);
     }
   }
   :root[data-theme="dark"] {
-    --sand: #1B1F1A;
-    --sand-2: #202620;
-    --card: #232922;
-    --ink: #EDE8DA;
-    --navy: #EDE8DA;
-    --line: rgba(237,232,218,0.14);
+    --sand: #0B1124;
+    --sand-2: #101833;
+    --card: #131C38;
+    --ink: #E9ECF4;
+    --navy: #E9ECF4;
+    --teal: #FDD352;
+    --line: rgba(233,236,244,0.14);
   }
 
   * { box-sizing: border-box; }
@@ -75,7 +78,8 @@
     max-width: 1120px;
     margin: 0 auto;
   }
-  .site-nav .logo-mark { height: 40px; width: auto; }
+  .site-nav .logo-mark { height: 38px; width: auto; }
+  .brand { display: inline-flex; }
   .site-nav nav { display: flex; gap: 28px; align-items: center; }
   .site-nav nav a {
     text-decoration: none;
@@ -132,10 +136,11 @@
     cursor: pointer;
   }
   .btn-primary {
-    background: var(--moss);
-    color: #fff;
+    background: var(--gold);
+    color: #051846;
+    font-weight: 600;
   }
-  .btn-primary:hover { background: var(--moss-deep); }
+  .btn-primary:hover { background: #EBAF1A; }
   .btn-ghost {
     background: transparent;
     color: var(--navy);
@@ -183,13 +188,13 @@
   .section-head h2 { font-size: clamp(1.6rem, 2.6vw, 2.15rem); }
   .section-head p { opacity: 0.85; max-width: 56ch; }
 
-  .band-moss {
+  .band-moss, .band-navy {
     background: var(--moss);
     color: #F4EFE3;
   }
-  .band-moss h2, .band-moss h3 { color: #fff; }
-  .band-moss .section-head p { color: #E8E4D4; opacity: 0.92; }
-  .band-moss .eyebrow { color: var(--gold-soft); }
+  .band-moss h2, .band-moss h3, .band-navy h2, .band-navy h3 { color: #fff; }
+  .band-moss .section-head p, .band-navy .section-head p { color: #DDE3F2; opacity: 0.92; }
+  .band-moss .eyebrow, .band-navy .eyebrow { color: var(--gold-soft); }
 
   /* ---------- Paths (lump sum / payments) ---------- */
   .paths {
@@ -269,7 +274,7 @@
     color: var(--teal);
     margin-bottom: 8px;
   }
-  .band-moss .before-after figcaption { color: var(--gold-soft); }
+  .band-moss .before-after figcaption, .band-navy .before-after figcaption { color: var(--gold-soft); }
 
   /* ---------- Contact ---------- */
   .contact-grid {
@@ -379,10 +384,42 @@
     flex-wrap: wrap;
     gap: 18px;
   }
-  .footer-inner img { height: 30px; opacity: 0.85; }
+  .footer-inner img { height: 30px; opacity: 0.9; }
+  .footer-brands { display: flex; align-items: center; gap: 18px; }
+  .footer-divider { width: 1px; height: 30px; background: var(--line); }
+  .footer-inner p { max-width: 62ch; }
   .footer-inner p { font-size: 0.85rem; opacity: 0.6; margin: 0; }
 
+  /* ---------- Agents ---------- */
+  .agent-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .agent-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 28px 28px 24px;
+  }
+  .agent-card .num { font-family: 'Fraunces', serif; color: var(--gold); font-weight: 600; font-size: 1.05rem; margin-bottom: 8px; }
+  .agent-card h3 { font-size: 1.22rem; margin-bottom: 8px; }
+  .agent-card p { margin: 0; opacity: 0.85; font-size: 0.97rem; }
+
+  /* ---------- Investors ---------- */
+  .investor-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: start; }
+  .check-list { list-style: none; padding: 0; margin: 0; }
+  .check-list li { position: relative; padding-left: 30px; margin-bottom: 14px; }
+  .band-navy .check-list li { color: #E9ECF4; }
+  section:not(.band-navy) + section:not(.band-navy) { border-top: 1px solid var(--line); }
+  .check-list li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 14px; height: 8px; border-left: 2.5px solid var(--gold); border-bottom: 2.5px solid var(--gold); transform: rotate(-45deg); }
+  .band-navy .contact-form { color: var(--ink); }
+  .band-navy .contact-note a { color: var(--gold-soft); }
+  .band-navy .contact-note { color: #DDE3F2; opacity: 0.85; }
+  .band-navy .contact-steps .step h4 { color: #fff; }
+  .band-navy .contact-steps .step p { color: #DDE3F2; }
+  .band-navy .contact-steps { border-color: rgba(255,255,255,0.18); }
+
   @media (max-width: 860px) {
+    .agent-grid { grid-template-columns: 1fr; }
+    .investor-grid { grid-template-columns: 1fr; }
     .hero { grid-template-columns: 1fr; padding-top: 40px; }
     .hero-art { order: -1; }
     .hero-art .tag { margin-top: 0; margin-left: 0; max-width: none; width: fit-content; }
@@ -406,3 +443,11 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
+
+  /* The NORTHSTAR wordmark has black lettering: give logos a light plate in dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .logo-mark,
+    :root:not([data-theme="light"]) .footer-brands img { background: #F7F5EF; padding: 4px 8px; border-radius: 4px; box-sizing: content-box; }
+  }
+  :root[data-theme="dark"] .logo-mark,
+  :root[data-theme="dark"] .footer-brands img { background: #F7F5EF; padding: 4px 8px; border-radius: 4px; box-sizing: content-box; }
